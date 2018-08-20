@@ -1,0 +1,19 @@
+<h1>Users</h1>
+
+ <% @users.each do |user| %>
+
+ <div class="user">
+   <%= image_tag "paticon.jpg", width: "50px" %>
+   <p>@<%= user.username %></p>
+   <p><%= user.first_name %></p>
+   <p><%= user.last_name %></p>
+   <p><%= user.city %></p>
+   <p><%= user.state %></p>
+
+ </div>
+
+
+
+ <% end %>
+
+</div>

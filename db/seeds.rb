@@ -15,6 +15,10 @@ u.update_attributes({
     state:      "Ohio",
     bio:        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
     fake:       false,
+    email:      "pat@pat.com",
+    password:   "123456",
+    password_confirmation: "123456",
+
   })
 
   u.save!
@@ -34,6 +38,9 @@ u.update_attributes({
       state:      Faker::Address.state_abbr,
       bio:        Faker::Lorem.paragraph,
       fake:       true,
+      email:      Faker::Internet.email,
+      password:   "123456",
+      password_confirmation: "123456",
 
       })
   end

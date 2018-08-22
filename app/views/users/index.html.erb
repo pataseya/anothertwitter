@@ -3,8 +3,8 @@
  <% @users.each do |user| %>
 
  <div class="user">
-   <%= image_tag "paticon.jpg", width: "50px" %>
-   <p>@<%= user.username %></p>
+   <%= image_tag "usericon.jpg", width: "50px" %>
+   <p><%= link_to  "@#{user.username}", user_path(id: user.id) %></p>
    <p><%= user.first_name %></p>
    <p><%= user.last_name %></p>
    <p><%= user.city %></p>

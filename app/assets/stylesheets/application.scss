@@ -1,0 +1,28 @@
+
+
+ @import "bootstrap";
+
+ .message {
+   border-style: solid;
+   border-width: 1px;
+   margin-bottom: 20px;
+   padding: 5px;
+
+
+ }
+
+ .message img {
+   float: left;
+   width: 40px;
+   padding: 10px;
+
+ }
+
+.message-date {
+  color: grey;
+  font-size: .8em;
+}
+
+.user_bio {
+  color: grey;
+}

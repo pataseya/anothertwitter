@@ -1,9 +1,21 @@
-<%= image_tag "usericon.jpg", width: "100px"%>
-<br>
-<p>@<%=  user.username  %></p>
-<p><%=  user.full_name %></p>
-<p><%=  user.city %>, <%= user.state %></p>
+<div class="row">
+  <div class="user_profile col-4">
+      <%= image_tag "usericon.jpg", width: "100px"%>
+      <br>
+      <p>@<%=  user.username  %></p>
+      <p><%=  user.full_name %></p>
+      <p><%=  user.city %>, <%= user.state %></p>
+      <br>
+      <p class="user_bio"><%= user.bio %></p>
+  </div>
 
-<p><%= user.bio %></p>
-<br>
-<br>
+  <div class="message_list col-8">
+      <% user.messages.each do |message| %>
+        <div class="message">
+            <%= image_tag "usericon.jpg" %>
+            <p><%= message.body %></p>
+            <p class="message-date"><%= time_ago_in_words(message.created_at) %> ago</p>
+        </div>
+      <% end %>
+  </div>
+</div>

@@ -65,3 +65,6 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
+
+gem 'aws-sdk-s3'
+gem 'figaro'

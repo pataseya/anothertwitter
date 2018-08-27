@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+IMAGES_DIR = File.expand_path(File.dirname(__FILE__) + "/../app/assets/images/")
+
 def create_messages(user)
   puts "Creating Messages for #{user.full_name}"
   20.times {
@@ -46,8 +49,7 @@ u.update_attributes({
 
 
   puts "generating fake users\n"
-  10.times do
-
+  10.times do |time|
     u = User.new({
       username:   Faker::Internet.username,
       first_name: Faker::Name.first_name,
@@ -61,7 +63,10 @@ u.update_attributes({
       password_confirmation: "123456",
 
       })
+    filename = "profileimage-#{time+1}.jpg"
+    u.avatar.attach(io: File.open(IMAGES_DIR + "/" + filename), filename: filename)
     u.save!
+    sleep 3
     create_messages(u)
 
   end

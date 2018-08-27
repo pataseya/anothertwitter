@@ -1,15 +1,23 @@
 <div class="row">
   <div class="user_profile col-4">
-      <%= image_tag "usericon.jpg", width: "100px"%>
+    <%= render "shared/avatar", user: user %>
       <br>
-      <p>@<%=  user.username  %></p>
-      <p><%=  user.full_name %></p>
-      <p><%=  user.city %>, <%= user.state %></p>
+      <p>@<%=  user.username  %> <br>
+          <%=  user.full_name %> <br>
+          <%=  user.city %>, <%= user.state %></p>
       <br>
       <p class="user_bio"><%= user.bio %></p>
   </div>
 
   <div class="message_list col-8">
+    <% if current_user == user %>
+      <h4>Got something to say??</h4>
+      <%= form_for message do |form| %>
+        <%= form.text_area :body %>
+        <%= form.submit "Tweet It!", class: "btn btn-primary" %>
+        <hr>
+        <% end %>
+    <% end %>
       <% user.messages.each do |message| %>
         <div class="message">
             <%= image_tag "usericon.jpg" %>

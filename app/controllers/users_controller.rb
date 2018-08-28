@@ -6,5 +6,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @messages = @user.messages
+  end
+
+  def follow
+    current_user.following << params[:id].to_i
+    current_user.save
+    redirect_to user_path(id: params[:id])
   end
 end

@@ -7,6 +7,10 @@
           <%=  user.city %>, <%= user.state %></p>
       <br>
       <p class="user_bio"><%= user.bio %></p>
+      <br>
+      <% unless current_user == user || current_user.following.include?(user.id) %>
+        <%= link_to "Follow", follow_user_path(user.id), class: "btn btn-primary" %>
+      <% end %>
   </div>
 
   <div class="message_list col-8">
@@ -18,7 +22,7 @@
         <hr>
         <% end %>
     <% end %>
-      <% user.messages.each do |message| %>
+      <% @messages.each do |message| %>
         <div class="message">
             <%= render "shared/avatar", user: message.user, width: "50px" %>
             <%= image_tag "usericon.jpg" %>

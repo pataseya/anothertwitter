@@ -28,13 +28,13 @@ puts "Generating my user"
 u = User.find_or_create_by(username: "pitty")
 
 u.update_attributes({
-    first_name: "Pat",
+    first_name: "Buddy",
     last_name:  "Camp",
     city:       "Columbus",
     state:      "Ohio",
     bio:        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
     fake:       false,
-    email:      "pat@pat.com",
+    email:      "buddy@cat.com",
     password:   "123456",
     password_confirmation: "123456",
 
@@ -51,8 +51,8 @@ u.update_attributes({
   puts "generating fake users\n"
   10.times do |time|
     u = User.new({
-      username:   Faker::Internet.username,
-      first_name: Faker::Name.first_name,
+      username:   Faker::Dog.name,
+      first_name: Faker::Cat.name,
       last_name:  Faker::Name.last_name,
       city:       Faker::Address.city,
       state:      Faker::Address.state_abbr,

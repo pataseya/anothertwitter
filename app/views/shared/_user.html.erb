@@ -1,34 +1,69 @@
 <div class="row">
-  <div class="user_profile col-4">
-    <%= render "shared/avatar", user: user, width: "100px" %>
-      <br>
-      <p>@<%=  user.username  %> <br>
-          <%=  user.full_name %> <br>
-          <%=  user.city %>, <%= user.state %></p>
-      <br>
-      <p class="user_bio"><%= user.bio %></p>
-      <br>
-      <% unless current_user == user || current_user.following.include?(user.id) %>
-        <%= link_to "Follow", follow_user_path(user.id), class: "btn btn-primary" %>
-      <% end %>
+  <div class="col-md-2">
+    <div class="card bg-light">
+      <%= image_tag 'pitterchatlogo.jpg', width: '150', height: '150', alt: "Pitterchat Logo" %>
+      <div class="card-body">
+        <h4 style="text-align: center;">Because critters need to twitter too....</h4>
+      </div>
+    </div>
   </div>
+   <div class="col-md-3">
+     <div class="card bg-light  mb-3 text-center" style="max-width: 25rem;">
 
-  <div class="message_list col-8">
-    <% if current_user == user %>
-      <h4>Got something to say??</h4>
-      <%= form_for message do |form| %>
-        <%= form.text_area :body %>
-        <%= form.submit "Tweet It!", class: "btn btn-primary" %>
-        <hr>
-        <% end %>
-    <% end %>
-      <% @messages.each do |message| %>
-        <div class="message">
-            <%= render "shared/avatar", user: message.user, width: "50px" %>
-            <%= image_tag "usericon.jpg" %>
+       <img class="card-img-top cardcenter">
+          <%= render "shared/avatar", user: user, width: "180px" %>
+             <h4 class="card-title">@<%= user.username %></h4>
+             <div class="card-body">
+
+               <% if current_user != user %>
+                 <% if current_user.following.include?(user.id) %>
+                    <p><%= link_to "UnFollow", unfollow_user_path(user.id), class: "btn btn-primary" %></p>
+                 <% else %>
+                    <p><%= link_to "Follow", follow_user_path(user.id), class: "btn btn-primary" %></p>
+                  <% end %>
+               <% end %>
+                <%= user.full_name %>
+               <p><%=  user.city %>, <%= user.state %></p>
+               <br>
+               <p class="user_bio"><%= user.bio %></p>
+               <br>
+               <table align='center'>
+     						<thead>
+     							<tr>
+     								<th>Pweets</th>
+     								<th>Following</th>
+     								<th>Followers</th>
+     							</tr>
+     						</thead>
+     						</tbody>
+     							<tr>
+     								<td></td>
+     								<td></td>
+     								<td></td>
+     							</tr>
+     						</body>
+     					</table>
+   			     </div>
+ 		  </div>
+    </div>
+    <div class="col-md-7">
+      <% if current_user == user %>
+        <h4>Pitter some Chatter!</h4>
+        <%= form_for message do |form| %>
+          <%= form.text_area :body %>
+          <%= form.submit "Pweet It!", class: "btn btn-primary" %>
+          <hr>
+          <% end %>
+      <% end %>
+      <h3>@<%= user.username %>'s chattter feed</h3>
+      <div class="well message_list">
+        <% @messages.each do |message| %>
+          <div class="message">
+            <%= render "shared/avatar", user: message.user, width: "80px" %>
             <p><%= message.body %></p>
             <p class="message-date"><%= time_ago_in_words(message.created_at) %> ago</p>
-        </div>
-      <% end %>
-  </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 </div>

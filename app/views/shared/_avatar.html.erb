@@ -1,6 +1,6 @@
 <% if user.avatar.attached? %>
-  <%= image_tag url_for(user.avatar), width: width %>
+  <%= image_tag url_for(user.avatar), width: width,   :class => "centerimage" %>
 
 <% else %>
-  <%= image_tag "usericon.jpg", width: width %>
+  <%= image_tag "usericon.png", width: width, :class => "centerimage"  %>
 <% end %>

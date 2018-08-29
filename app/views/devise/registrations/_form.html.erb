@@ -1,28 +1,41 @@
 <div class="field">
-  <%= f.label :email %><br />
+  <%= f.label :email %>
   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 </div>
 
-<div class="field">
-  <%= f.label :avatar %><br />
+<div class="form-group">
+  <%= f.text_field :first_name, placeholder: "Name", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.text_field :username, placeholder: "Choose a @handle", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.text_area :bio, placeholder: "Tell us about yourself...", class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <strong>Upload a photo</strong>
   <%= f.file_field :avatar %>
 </div>
 
 <div class="field">
-  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, autocomplete: "off" %>
-  <% if @minimum_password_length %>
-    <br />
-    <em><%= @minimum_password_length %> characters minimum</em>
-  <% end %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off" %>
+    <% if @minimum_password_length %>
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+
 </div>
 
 <div class="field">
-  <%= f.label :password_confirmation %><br />
+  <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation, autocomplete: "off" %>
 </div>
 
 <div class="field">
-  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password, autocomplete: "off" %>
+  <%= f.label :current_password %>
+  <%= f.password_field :current_password, autocomplete: "off" %><i>(current password needed to confirm changes)</i>
 </div>

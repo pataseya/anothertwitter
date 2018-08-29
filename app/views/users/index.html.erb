@@ -1,18 +1,49 @@
-<h1>Users</h1>
+<h1>Critters</h1>
 
- <% @users.each do |user| %>
+<div class="row">
+	<% @users.each_with_index do |user, index| %>
+	<div class="col-md-3">
+		<div class="card  bg-light">
+		 <img class="card-img-top cardcenter">
+          <%= render "shared/avatar", user: user, width: "100px"%>
+			<div class="card-header"><%= link_to  "@#{user.username}", user_path(id: user.id) %></div>
+			<div class="card-body">
 
- <div class="user">
-   <%= render "shared/avatar", user: user, width: "100px"%>
+						<% if current_user.following.include?(user.id) %>
+						<%= link_to "Following", unfollow_user_path(id: user.id), class: "btn btn-primary", id: "unfollow_btn_#{index}" %>
+						<% else %>
+							<% if current_user.id != user.id %>
+							<%= link_to "Follow", follow_user_path(id: user.id), class: " btn btn-primary" %>
+							<% end %>
+						<% end %>
 
-   <p><%= link_to  "@#{user.username}", user_path(id: user.id) %></p>
-   <p><%= user.first_name %></p>
-   <p><%= user.last_name %></p>
-   <p><%= user.city %></p>
-   <p><%= user.state %></p>
 
- </div>
+          <br>
+          <%= user.first_name %> <%= user.last_name %>
+          <br>
+          <%= user.city %>, <%= user.state %>
+			</div>
+		</div>
+	</div>
 
- <% end %>
 
+
+
+  <script>
+		$(document).on('turbolinks:load', function() {
+			$('#unfollow_btn_<%= index %>').hover(function() {
+				$(this).removeClass('btn-primary');
+				$(this).addClass('btn-danger');
+				$(this).html("Unfollow");
+			}, function(){
+				$(this).html("Following");
+				$(this).removeClass('btn-danger');
+				$(this).addClass('btn-primary');
+			});
+			})
+
+
+	</script>
+
+  <% end %>
 </div>

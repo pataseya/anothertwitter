@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/users" => "users#index", as: :users
   get "/users/:id" => "users#show", as: :user
   get "/follow/:id" => "users#follow", as: :follow_user
+  get "/unfollow/:id" => "users#unfollow", as: :unfollow_user
 
   resources :messages
 

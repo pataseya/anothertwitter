@@ -51,17 +51,30 @@
         <h4>Pitter some Chatter!</h4>
         <%= form_for message do |form| %>
           <%= form.text_area :body %>
-          <%= form.submit "Pweet It!", class: "btn btn-primary" %>
+          <%= form.submit "Pweet It!", class: "btn btn-primary", id: "tweet-button" %>
           <hr>
           <% end %>
       <% end %>
       <h3>@<%= user.username %>'s chattter feed</h3>
       <div class="well message_list">
         <% @messages.each do |message| %>
-          <div class="message">
+<!--          <div class="message">
             <%= render "shared/avatar", user: message.user, width: "80px" %>
             <p><%= message.body %></p>
-            <p class="message-date"><%= time_ago_in_words(message.created_at) %> ago</p>
+          -->
+          <div class="message" id="message-<%= message.id %>">
+            <div class="message-image">
+                <%= render "shared/avatar", user: message.user, width: "50px" %>
+            </div>
+            <div class="message-body">
+                <p class="message-body"><%= message.body %></p>
+            </div>
+            <br>
+            <p class="message-date text-right"><%= time_ago_in_words(message.created_at) %> ago
+            <% if message.user == current_user %>
+                <i class="far fa-trash-alt" onclick="deleteTweet(<%= message.id %>)"></i>
+            <% end %>
+            </p>
           </div>
         <% end %>
       </div>

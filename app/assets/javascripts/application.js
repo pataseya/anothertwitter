@@ -13,7 +13,19 @@
 //= require rails-ujs
 //= require jquery3
 //= require popper
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+function tweetSubmitted() {
+  $('#tweet-button').click(function() {
+    message = $('#message_body').val();
+    alert("Hey, I tweeted: \"" + message + "\"");
+  });
+}
+ $(document).ready(tweetSubmitted);
+ function deleteTweet(id) {
+  $("#message-" + id).slideUp();
+}

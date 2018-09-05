@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery3
 //= require popper
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
@@ -27,4 +28,15 @@ function tweetSubmitted() {
  $(document).ready(tweetSubmitted);
  function deleteTweet(id) {
   $("#message-" + id).slideUp();
+}
+
+function deleteTweet(id) {
+  $.ajax({
+      url: '/messages/' + id,
+      type: 'DELETE',
+      data: { authenticity_token: $('[name="csrf-token"]')[0].content},
+      success: function(result) {
+        $('#message-' + id).fadeOut(500);
+      }
+  });
 }

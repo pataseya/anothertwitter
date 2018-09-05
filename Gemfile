@@ -72,6 +72,8 @@ gem 'devise'
 gem 'aws-sdk-s3'
 gem 'figaro'
 
+gem 'jquery-ui-rails'
+
 group :production do
   gem 'pg'
 end

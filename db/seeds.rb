@@ -25,7 +25,7 @@ end
 Message.destroy_all
 
 puts "Generating my user"
-u = User.find_or_create_by(username: "pitty")
+u = User.find_or_create_by(username: "buddycat")
 
 u.update_attributes({
     first_name: "Buddy",
@@ -34,7 +34,7 @@ u.update_attributes({
     state:      "Ohio",
     bio:        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
     fake:       false,
-    email:      "buddy@cat.com",
+    email:      "buddy@catsrule.com",
     password:   "123456",
     password_confirmation: "123456",
 
